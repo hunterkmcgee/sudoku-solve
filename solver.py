@@ -16,10 +16,9 @@ myBoard = [
 ]
 
 def solve(board):
-
     nextEmpty = firstEmpty(board)
 
-    if not nextEmpty: # Base case, all spaces filled
+    if not nextEmpty: # Base case, no more open spaces (SOLVED)
         return True
     else:
         row, col = nextEmpty
