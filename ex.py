@@ -7,7 +7,7 @@ from PIL import Image
 ## to detect the contours (borders) of the puzzle.
 ## It then draws a green line around the puzzle.
 
-CONST_IMAGE_PATH = "./test4.jpg"
+CONST_IMAGE_PATH = "./test_puzzle.jpg"
 CONST_COEFF = 0.02
 originalImage = cv2.imread(CONST_IMAGE_PATH)
 img = cv2.imread(CONST_IMAGE_PATH,0)
