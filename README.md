@@ -4,6 +4,8 @@ Python script to solve a 9x9 sodoku puzzle, using backtracking. Edit myBoard ins
 ## Current Successes:
 * <b>solver.py</b> ) Implemented the solving algorithm
 * <b>ex.py</b> ) Currently draws a green grid around the sudoku puzzle (if the image contains a puzzle). Edit image path inside of ex.py to change images.
+
+
 ![ex.py](/example.PNG)
 
 ## Necessary Packages:
