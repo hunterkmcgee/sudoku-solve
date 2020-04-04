@@ -15,6 +15,18 @@ myBoard = [
     [0, 5, 0, 4, 0, 0, 0, 0, 0],
 ]
 
+impossible = [
+    [1, 2, 3, 4, 5, 6, 7, 8, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 2],
+    [0, 0, 0, 0, 0, 0, 0, 0, 3],
+    [0, 0, 0, 0, 0, 0, 0, 0, 4],
+    [0, 0, 0, 0, 0, 0, 0, 0, 5],
+    [0, 0, 0, 0, 0, 0, 0, 0, 6],
+    [0, 0, 0, 0, 0, 0, 0, 0, 7],
+    [0, 0, 0, 0, 0, 0, 0, 0, 8],
+    [0, 0, 0, 0, 0, 0, 0, 0, 9],
+]
+
 def solve(board):
     nextEmpty = firstEmpty(board)
 
@@ -31,6 +43,8 @@ def solve(board):
                 return True
 
             board[row][col] = 0 # guess doesn't work
+
+    return False
 
 
 def validate(board, pos, value):
@@ -51,13 +65,13 @@ def validate(board, pos, value):
 
     for j in range(squareX * 3, squareX * 3 + 3):
         for i in range(squareY * 3, squareY * 3 + 3):
-            if board[i][j] == value and (i, j) != (row, col):
+            if board[i][j] == value and (i,j) != pos:
                 return False
     return True
 
 def firstEmpty(board):
-    for i in range(len(board)):
-        for j in range(len(board[0])):
+    for i in range(len(board[0])):
+        for j in range(len(board[1])):
             if board[i][j] == 0:
                 return (i, j) # row, col
     return None
@@ -76,12 +90,25 @@ def printBoard(board):
             else:
                 print(board[i][j], end=" ")
 
+def checkBoard(board):
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+
+            if board[i][j] != 0:
+                val = board[i][j]
+                if not validate(board, (i, j), val):
+                    return False
+    return True
+
 printBoard(myBoard)
 print("\n")
 
-solution = solve(myBoard)
-
-if solution:
-    printBoard(myBoard)
+if not checkBoard(myBoard):
+    print("Invalid board.")
 else:
-    print("No Solution.")
+    solution = solve(myBoard)
+
+    if solution:
+        printBoard(myBoard)
+    else:
+        print("No Solution.")
