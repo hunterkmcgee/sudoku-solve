@@ -106,4 +106,4 @@ def extract(image_path):
 ## Inspired by this github repo (link below)
 ## https://github.com/tusharsircar95/SudokuVisionSolver
 
-extract("../img/test4.jpg")
+extract("./img/test4.jpg")
