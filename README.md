@@ -6,7 +6,7 @@ Python script to solve a 9x9 sodoku puzzle, using backtracking. Edit myBoard ins
 * <b>ex.py</b> ) Currently draws a green grid around the sudoku puzzle (if the image contains a puzzle). Edit image path inside of ex.py to change images.
 
 
-![ex.py](/example.PNG)
+![ex.py](./img/example.PNG)
 
 ## Necessary Packages:
 * <b>Pillow</b> ) 'pip install Pillow'
