@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 import math
-from PIL import Image
 
 ## This program loads an image containing a sudoku puzzle
 ## and applies pre-processing and hough transforms
