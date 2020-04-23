@@ -18,7 +18,7 @@ def extract(image_path):
     img = cv2.medianBlur(img,3)
     img = cv2.adaptiveThreshold(img , 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,11,2)
     img = cv2.bitwise_not(img,img)
-    print("thresholding the image")
+
     kernel = np.empty((3,3),'uint8')
     kernel[0][0] = 0
     kernel[0][1] = 1
@@ -30,7 +30,7 @@ def extract(image_path):
     kernel[2][1] = 1
     kernel[2][2] = 0
     dilated = cv2.dilate(img,kernel)
-    print("detecting the grid")
+
     (contours, _) = cv2.findContours(img.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     contours = sorted(contours, key = cv2.contourArea , reverse = True)
     screenCnt = None
@@ -79,12 +79,15 @@ def extract(image_path):
 
     # PERSPECTIVE WARP
     y,x = roi_img.shape
-    dst_points = np.float32([[x,0],[0, 0], [0, y], [x,y]])
+    dst_points = np.float32([[0, 0], [0, y], [x,y], [x,0]])
     warp = cv2.getPerspectiveTransform(result, dst_points)
     warp_img = cv2.warpPerspective(roi_img,warp,(x,y))
     warp_img = cv2.resize(warp_img, (x,x), interpolation=cv2.INTER_AREA)
 
 
+    cv2.imshow('Region',warp_img)
+
+    
     # CELL SEGMENTATION
     for i in range(9):
         x_aoi = math.ceil(i*(x/9))# + 0.5*(x/9)
@@ -92,18 +95,15 @@ def extract(image_path):
             y_aoi = math.ceil(j*(y/9))# + 0.5*(y/9)
             #print(int(y_aoi), int(x_aoi))
             cell = warp_img[y_aoi:y_aoi+math.ceil(y/9), x_aoi:x_aoi+math.ceil(x/9)]
-            '''
+            cell = cv2.resize(cell, (28,28),interpolation=cv2.INTER_AREA)
             print(cell.shape)   #PRINT FOR CELL SIZE
-            #if (j == 7):       #ONLY PRINT CELLS FROM CERTAIN ROW or COL 
-                #cv2.imshow('cell'+str(i), cell)    # display cell
-            '''
-    
-    cv2.imshow('Region',warp_img)
-    #Image.fromarray(warp_img).save('warp_'+image_path) # to save the cropped, warped region
+            if (j == 2):       #ONLY PRINT CELLS FROM CERTAIN ROW or COL 
+                cv2.imshow('cell'+str(i), cell)    # display cell
+            
     cv2.waitKey(0)
 #'''
 
 ## Inspired by this github repo (link below)
 ## https://github.com/tusharsircar95/SudokuVisionSolver
 
-extract("./img/test4.jpg")
+extract("./img/4.jpg")
