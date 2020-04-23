@@ -1,5 +1,6 @@
 # sudoku-solve
 By Hunter McGee, Bryce Taylor, and Matthew Wells
+
 Python script to solve a 9x9 sodoku puzzle, using backtracking. Edit myBoard inside of solver.py to fit your puzzle and simply run solver.py.
 
 ## Current Successes:
