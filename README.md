@@ -3,15 +3,15 @@ Python script to solve a 9x9 sodoku puzzle, using backtracking. Edit myBoard ins
 
 ## Current Successes:
 * <b>solver.py</b> ) Implemented the solving algorithm
-* <b>ex.py</b> ) Currently draws a green grid around the sudoku puzzle (if the image contains a puzzle). Edit image path inside of ex.py to change images.
+* <b>ex.py</b> ) Currently extracting puzzle, segmenting region, and extracting contents of the 81 cells.
 
 
 ![ex.py](./img/example.PNG)
 
 ## Necessary Packages:
-* <b>Pillow</b> ) 'pip install Pillow'
-* <b>OpenCV</b> ) 'pip install opencv-python'
+* <b>OpenCV</b> 'pip install opencv-python'
+* <b>Numpy</b> 'pip install numpy'
 
-## Future Plans:
-To use OpenCV to extract a puzzle from an image and then detect the components of the puzzle, ultimately feeding the representation to solver.py
 
+## To-do:
+Classify digits.
