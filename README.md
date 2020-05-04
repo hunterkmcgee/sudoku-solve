@@ -1,7 +1,7 @@
 # sudoku-solve
-By Hunter McGee, Bryce Taylor, and Matthew Wells
+By Hunter McGee
 
-Python script to solve a 9x9 sodoku puzzle, using backtracking. Edit myBoard inside of solver.py to fit your puzzle and simply run solver.py.
+Python script to solve a 9x9 sodoku puzzle, using backtracking. For automatic board detection, load your image into the img directory and edit the file path inside of ex.ipynb or ex.py. For manual entry, edit myBoard inside of solver.py to fit your puzzle and simply run solver.py. 
 
 ## Current Successes:
 * <b>solver.py</b> Implemented the solving algorithm
